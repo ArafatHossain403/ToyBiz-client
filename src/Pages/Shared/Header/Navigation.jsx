@@ -56,19 +56,20 @@ const Navigation = () => {
               <a>Item 3</a>
             </li> */}
             <li>
-            <a>Home</a>
+            <Link to='/'>Home</Link>
           </li>
           <li>
-            <a>All Toys</a>
+           
+            <Link to="/allToys">All Toys</Link>
           </li>
           <li>
-            <a>My Toys</a>
+            <Link to="/myToys">My Toys</Link>
           </li>
           <li>
-            <a>Add A Toy</a>
+            <Link to="/addToys">Add A Toy</Link>
           </li>
           <li>
-            <a>Blogs</a>
+            <Link to="/blogs">Blogs</Link>
           </li>
           </ul>
         </div>
@@ -79,20 +80,21 @@ const Navigation = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Home</a>
+        <li>
+            <Link to='/'>Home</Link>
           </li>
           <li>
-            <a>All Toys</a>
+           
+            <Link to="/allToys">All Toys</Link>
           </li>
           <li>
-            <a>My Toys</a>
+            <Link to="/myToys">My Toys</Link>
           </li>
           <li>
-            <a>Add A Toy</a>
+            <Link to="/addToys">Add A Toy</Link>
           </li>
           <li>
-            <a>Blogs</a>
+            <Link to="/blogs">Blogs</Link>
           </li>
           
                
