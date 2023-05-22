@@ -4,7 +4,7 @@ import logo1 from '../../../assets/logo1.png'
 const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10 bg-base-200 text-base-content">
+      <footer className="footer p-10 bg-base-200 text-base-content mt-5">
         <div>
           <span className="footer-title">Services</span>
           <a className="link link-hover">Branding</a>
@@ -33,7 +33,7 @@ const Footer = () => {
           </Link>
           <p>
             ToyBiz Company Ltd.<br />
-            copy right @2023
+            copyright @2023
           </p>
         </div>
         <div className="md:place-self-center md:justify-self-end">
