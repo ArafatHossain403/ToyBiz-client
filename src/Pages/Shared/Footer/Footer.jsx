@@ -7,10 +7,10 @@ const Footer = () => {
       <footer className="footer p-10 bg-base-200 text-base-content mt-5">
         <div>
           <span className="footer-title">My Account</span>
-          <a className="link link-hover">Information</a>
+          <a className="link link-hover">Order history</a>
           <a className="link link-hover">Extra</a>
-          <a className="link link-hover">Contact Us</a>
-          <a className="link link-hover">Advertisement</a>
+          <a className="link link-hover">Wish list</a>
+
         </div>
         <div>
           <span className="footer-title">Company</span>
