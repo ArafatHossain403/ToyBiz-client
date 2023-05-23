@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const AllToysRow = ({toy}) => {
@@ -23,8 +24,10 @@ const AllToysRow = ({toy}) => {
               <td>{sub_category}</td>
               <td>{price}</td>
               <td>{available_quantity}</td>
-              <button className="btn btn-primary">View Details</button>
+              <td><button className="btn btn-primary"><Link> View Details</Link></button></td>
+              
             </tr>
+            
             
         </div>
     );
