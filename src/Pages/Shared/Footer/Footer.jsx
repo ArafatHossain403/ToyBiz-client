@@ -6,10 +6,10 @@ const Footer = () => {
     <div>
       <footer className="footer p-10 bg-base-200 text-base-content mt-5">
         <div>
-          <span className="footer-title">Services</span>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
+          <span className="footer-title">My Account</span>
+          <a className="link link-hover">Information</a>
+          <a className="link link-hover">Extra</a>
+          <a className="link link-hover">Contact Us</a>
           <a className="link link-hover">Advertisement</a>
         </div>
         <div>

@@ -3,50 +3,28 @@
 // import app from "../../firebase/firebase.config";
 // // import { useState } from "react";
 
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
  const Login = () => {
+
+    const {signIn} = useContext(AuthContext);
       
-//     const auth =getAuth(app);
-//     const provider =new GoogleAuthProvider();
+      const handleLogin =event => {
+        event.preventDefault();
+        const form =event.target;
+        const email =form.email.value;
+        const password =form.password.value;
+        console.log(email, password);
+        signIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.log(error));
 
-//     const handleGoogleSignIn =()=> {
-//         signInWithPopup(auth, provider)
-//         .then(result =>{
-//             const user = result.user;
-//             console.log(user)
-//         })
-//         .catch(error=>{
-//             console.log(error.message)
-//         })
-
-
-//     }
-
-//     // const [regError, setError]=  useState('');
-//     // const [success, setSuccess]=  useState('');
-//     const handleSignIn = event =>{
-//         event.preventDefault();
-//         const form = event.target;
-//         const email = form.email.value;
-//         const password = form.password.value;
-
-//         signInWithEmailAndPassword(auth, email, password)
-//         .then(result =>{
-//             const loggedUser = result.user;
-//             // setSuccess('user login successful');
-//             // setError('');
-//             event.target.reset();
-//             console.log(loggedUser);
-
-//         })
-//         .catch(error=>{
-//             console.log(error)
-//             // setError(error.message)
-//         })
-         
-//     } onSubmit={handleSignIn}
-
+      }
 
   return (
     
@@ -56,7 +34,7 @@ import { Link } from "react-router-dom";
             
             <div className="card-body">
             <h1 className="text-4xl font-bold text-center mt-4 text-green">Login now</h1>
-              <form action="" >
+              <form onSubmit={handleLogin}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
