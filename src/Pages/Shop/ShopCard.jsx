@@ -5,12 +5,7 @@ const ShopCard = ({ toy }) => {
   return (
     <div>  
       <div className="card w-96 glass">
-        <figure>
-          <img className="h-25"
-            src={picture_url}
-            alt="car!"
-          />
-        </figure>
+        
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
           <p className="text-blue-600">{price}</p>
