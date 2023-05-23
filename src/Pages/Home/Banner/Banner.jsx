@@ -8,6 +8,7 @@ const Banner = () => {
             src="https://cdn.pixabay.com/photo/2019/10/24/07/03/red-4573541_1280.jpg"
             className="w-full "
           />
+          
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide4" className="btn btn-circle">
               ❮

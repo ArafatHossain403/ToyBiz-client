@@ -19,9 +19,9 @@ const Shop = () => {
         <button className="btn btn-accent">Transformer</button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-flow-col-3 gap-6">
-        {toys.map((toy) => (
+        {toys.map(toy => 
           <ShopCard key={toy.id} toy={toy}></ShopCard>
-        ))}
+        )}
       </div>
     </div>
   );

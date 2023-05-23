@@ -16,8 +16,8 @@ const ShopCard = ({ toy }) => {
           <p className="text-blue-600">{price}</p>
           <p>{rating}</p>
           <div className="card-actions justify-end">
-            <Link to={`/toy/${id}`}></Link>
-            <button className="btn btn-primary">View Details</button>
+            <Link to={`/toy/${id}`}><button className="btn btn-primary">View Details</button></Link>
+            
           </div>
         </div>
       </div>
