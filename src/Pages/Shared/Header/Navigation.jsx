@@ -1,8 +1,16 @@
-
 import { Link } from "react-router-dom";
-import logo1 from '../../../assets/logo1.png'
+import logo1 from "../../../assets/logo1.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const Navigation = () => {
+  const { user, logOut,photoURL
+  } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="navbar bg-base-100 h-24">
       <div className="navbar-start">
@@ -56,55 +64,87 @@ const Navigation = () => {
               <a>Item 3</a>
             </li> */}
             <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-           
-            <Link to="/allToys">All Toys</Link>
-          </li>
-          <li>
-            <Link to="/myToys">My Toys</Link>
-          </li>
-          <li>
-            <Link to="/addToys">Add A Toy</Link>
-          </li>
-          <li>
-            <Link to="/blogs">Blogs</Link>
-          </li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/allToys">All Toys</Link>
+            </li>
+            <li>
+              <Link to="/blogs">Blogs</Link>
+            </li>
+
+            {user ? (
+              <>
+                <span>{user?.displayName}
+                <div className="avatar">
+  <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 ml-3">
+    <img src={photoURL}/>
+  </div>
+</div>
+                </span>
+                <li>
+                  <Link to="/myToys">My Toys</Link>
+                </li>
+                <li>
+                  <Link to="/addToys">Add A Toy</Link>
+                </li>
+                <button onClick={handleLogOut} className="btn btn-neutral ">
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <li className="text-xl ">
+                  <Link  to="/login">Login</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
-        <Link to='/' className="btn btn-ghost normal-case text-xl">
+        <Link to="/" className="btn btn-ghost normal-case text-xl">
           <img className="h-16" src={logo1} alt="" />
         </Link>
         {/* <Link to='/' className="btn btn-ghost normal-case text-xl">ToyBiz</Link> */}
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-        <li>
-            <Link to='/'>Home</Link>
+          <li>
+            <Link to="/">Home</Link>
           </li>
           <li>
-           
             <Link to="/allToys">All Toys</Link>
-          </li>
-          <li>
-            <Link to="/myToys">My Toys</Link>
-          </li>
-          <li>
-            <Link to="/addToys">Add A Toy</Link>
           </li>
           <li>
             <Link to="/blogs">Blogs</Link>
           </li>
-          
-               
+
+          {user ? (
+            <>
+              <li>
+                <Link to="/myToys">My Toys</Link>
+              </li>
+              <li>
+                <Link to="/addToys">Add A Toy</Link>
+              </li>
+
+              <span >{user?.displayName}</span>
+              <button onClick={handleLogOut} className="btn btn-neutral ml-3">
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <li className="text-xl ">
+                <Link  to="/login">Login</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to='/login'>
-        <button className="btn btn-success">Login</button>
-        </Link>
-      
+        {/* <Link to="/login">
+          <button className="btn btn-success">Login</button>
+        </Link> */}
       </div>
     </div>
   );

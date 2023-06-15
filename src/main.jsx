@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
 import './index.css'
 import {
   
@@ -8,14 +7,20 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import router from './Routes/Routes.jsx';
+import { HelmetProvider } from 'react-helmet-async';
 import AuthProvider from './provider/AuthProvider';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <div className='max-w-5xl mx-auto'>
-    <React.StrictMode>
-      <AuthProvider> 
+  
+  <React.StrictMode>
+  
+    <HelmetProvider>
+    <AuthProvider>
+    <div className='max-w-screen-7xl mx-auto'>
       <RouterProvider router={router} />
-       </AuthProvider>
-    
-  </React.StrictMode>,
-  </div>
+    </div>
+    </AuthProvider>
+    </HelmetProvider>
+ 
+</React.StrictMode>,
 )

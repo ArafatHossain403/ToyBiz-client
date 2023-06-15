@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const AllToysRow = ({toy}) => {
     const {
-        id,
+        _id,
        
         name,
         seller_name,
@@ -18,13 +18,13 @@ const AllToysRow = ({toy}) => {
     return (
         <div>
             <tr>
-              <th>{id}</th>
+              <th>{_id}</th>
               <td>{seller_name}</td>
               <td>{name}</td>
               <td>{sub_category}</td>
               <td>{price}</td>
               <td>{available_quantity}</td>
-              <td><button className="btn btn-primary"><Link> View Details</Link></button></td>
+              <td><Link to={`/allToy/${_id}`}><button className="btn btn-primary">View Details</button></Link></td>
               
             </tr>
             

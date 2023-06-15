@@ -1,12 +1,21 @@
 import { Link } from "react-router-dom";
+import Aos from "aos";
+import 'aos/dist/aos.css'
+import { useEffect } from "react";
 
 const ShopCard = ({ toy }) => {
   const { id, picture_url, name, price, rating } = toy;
+
+  useEffect(()=> {
+    Aos.init();
+  }, []);
+
+  
   return (
-    <div>  
+    <div data-aos="fade-down" >  
       <div className="card w-96 glass">
         <figure>
-          <img className="h-25"
+          <img className="h-[200px]"
             src={picture_url}
             alt="car!"
           />

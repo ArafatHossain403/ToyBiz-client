@@ -1,108 +1,176 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 
 const SignUp = () => {
-    const {createUser} = useContext(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    const handleSignUp = event =>{
-        event.preventDefault();
-        const form =event.target;
-        const name =form.name.value;
-        const email =form.email.value;
-        const password =form.password.value;
-        const photoUrl =form.photoUrl.value;
+  const onSubmit = (data) => {
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
 
-        console.log(name,email, photoUrl)
-
-        createUser (email, password, )
-        .then(result => {
-            const user = result.user;
-            console.log(user)
-
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          const saveUser = { name: data.name, email: data.email };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  title: "User Update Successfully",
+                  showClass: {
+                    popup: "animate__animated animate__fadeInDown",
+                  },
+                  hideClass: {
+                    popup: "animate__animated animate__fadeOutUp",
+                  },
+                });
+                navigate("/");
+              }
+            });
         })
-        .catch(error => console.log(error))
-        
+        .catch((error) => console.log(error));
+    });
+  };
 
+  
 
-
-    }
-    return (
-        <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row">
-          <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
-            
-            <div className="card-body">
-            <h1 className="text-4xl font-bold text-center mt-4">Sign Up</h1>
-              <form onSubmit={handleSignUp} >
+  return (
+    <div>
+      <Helmet>
+        <title>ToyBiz | SignUp</title>
+      </Helmet>
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content flex-col md:flex">
+          <div className="text-center  lg:text-left">
+            <h1 className="text-4xl font-bold"> Please Signup </h1>
+          </div>
+          <div className="card   shadow-2xl bg-base-100">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
                 <input
                   type="text"
+                  {...register("name", { required: true })}
                   name="name"
-                  placeholder="name"
+                  placeholder="Name"
                   className="input input-bordered"
                 />
+                {errors.name && (
+                  <span className="text-red-700">This field is required</span>
+                )}
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  type="text"
+                  type="email"
+                  {...register("email", { required: true })}
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
                 />
+                {errors.email && (
+                  <span className="text-red-700">This field is required</span>
+                )}
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    maxLength: 20,
+                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                  })}
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
                 />
-                {/* <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label> */}
-                
+                {errors.password?.type === "required" && (
+                  <p className="text-red-700">Password is required</p>
+                )}
+                {errors.password?.type === "minLength" && (
+                  <p className="text-red-700">Password must be 6 characters</p>
+                )}
+                {errors.password?.type === "maxLength" && (
+                  <p className="text-red-700">
+                    Password must be less than 20 characters
+                  </p>
+                )}
+                {errors.password?.type === "pattern" && (
+                  <p className="text-red-700">
+                    Password must have one Uppercase one lower case, one number
+                    and one special character.
+                  </p>
+                )}
               </div>
+              
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Photo URL</span>
                 </label>
                 <input
                   type="text"
-                  name="photoUrl"
-                  placeholder="photoUrl"
+                  {...register("photo", { required: true })}
+                  name="photo"
+                  placeholder="PhotoUrl"
                   className="input input-bordered"
                 />
+                {errors.photo && (
+                  <span className="text-red-700">This field is required</span>
+                )}
               </div>
+
               <div className="form-control mt-6">
-                <input className="btn btn-accent" type="button" value="Sign Up" />
+                <input
+                  className="btn btn-primary"
+                  type="submit"
+                  value="Sign Up"
+                />
               </div>
-              </form>
-              <div>
-                  Have an account?{" "}
-                  <Link className="text-blue-600" to="/login">
-                    Login
-                  </Link>
-                </div>
-              
-              
-            </div>
+            </form>
+            <p className="text-center font-bold">
+              <small>
+                Already have an account?   
+                <Link className="text-green-600 ml-1" to="/login">
+                 
+                  Login
+                </Link>
+              </small>
+            </p>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default SignUp;

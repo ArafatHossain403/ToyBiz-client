@@ -5,10 +5,11 @@ import Error from "../Pages/Error/Error";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Signup/Signup";
 import AllToys from "../Pages/AllToys/AllToys";
-import MyToys from "../Pages/MyToys/MyToys";
 import AddToy from "../Pages/AddToy/AddToy";
 import Blogs from "../Pages/Blogs/Blogs";
 import ToyDetails from "../Pages/ToyDetails/ToyDetails";
+import ToyLayout from "../Layout/ToyLayout";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -30,12 +31,11 @@ const router = createBrowserRouter([
 
       {
         path: "/allToys",
-        element: <AllToys></AllToys>,
+        element: <PrivateRoute><AllToys></AllToys></PrivateRoute>,
+        
       },
-      {
-        path: "/myToys",
-        element: <MyToys></MyToys>,
-      },
+     
+
       {
         path: "/addToys",
         element: <AddToy></AddToy>,
@@ -44,10 +44,16 @@ const router = createBrowserRouter([
         path: "/blogs",
         element: <Blogs></Blogs>,
       },
+    ],
+  },
+  {
+    path: "/myToys",
+    element:<ToyLayout></ToyLayout> ,
+    loader: ({ params }) => fetch(`http://localhost:5000/allToy/${params._id}`),
+    children: [
       {
-        path: "toy/:id",
-        element:<ToyDetails></ToyDetails>,
-        loader: ({params}) => fetch(`https://toybiz-server.vercel.app/allToy/${params.id}`) 
+        path: ":_id",
+        element: <ToyDetails></ToyDetails>,
       },
     ],
   },

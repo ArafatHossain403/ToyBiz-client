@@ -1,7 +1,8 @@
-import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
-const ToyDetails = () => {
-  const toy = useLoaderData();
+
+const ToyDetails = ({toyDetails}) => {
+  
   const {
     picture_url,
     name,
@@ -12,11 +13,15 @@ const ToyDetails = () => {
     rating,
     available_quantity,
     description,
-  } = toy;
-  console.log(toy)
+  } = toyDetails;
+  console.log(toyDetails)
 
   return (
     <div className="my-10">
+      <Helmet>
+            <title>ToyBiz | ToyDetails</title>
+        
+      </Helmet>
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
           <img
