@@ -9,7 +9,7 @@ const MyToys = () => {
 
   const [toys, setToys] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/allToy")
+    fetch("https://toybiz-server.vercel.app/allToy")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
@@ -26,7 +26,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/allToy/${item._id}`, {
+        fetch(`https://toybiz-server.vercel.app/allToy/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -43,7 +43,7 @@ const MyToys = () => {
   // const [myToys, setMyToys] = useState([]);
   // const { user } = useContext(AuthContext);
   // useEffect(() => {
-  //   fetch("http://localhost:5000/allToy")
+  //   fetch("https://toybiz-server.vercel.app/allToy")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       const toys = data.filter((toy) => toy.seller_email === user?.email);
