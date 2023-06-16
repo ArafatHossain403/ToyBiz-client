@@ -4,7 +4,7 @@ import 'aos/dist/aos.css'
 import { useEffect } from "react";
 
 const ShopCard = ({ toy }) => {
-  const { id, picture_url, name, price, rating } = toy;
+  const { _id, picture_url, name, price, rating } = toy;
 
   useEffect(()=> {
     Aos.init();
@@ -25,7 +25,7 @@ const ShopCard = ({ toy }) => {
           <p className="text-blue-600">{price}</p>
           <p>{rating}</p>
           <div className="card-actions justify-end">
-            <Link to={`/toy/${id}`}><button className="btn btn-primary">View Details</button></Link>
+            <Link to={`/allToy/${_id}`}><button className="btn btn-primary">View Details</button></Link>
             
           </div>
         </div>

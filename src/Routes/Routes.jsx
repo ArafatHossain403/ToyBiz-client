@@ -1,15 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
+// import ToyLayout from "../Layout/ToyLayout";
 import Home from "../Pages/Home/Home/Home";
 import Error from "../Pages/Error/Error";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Signup/Signup";
 import AllToys from "../Pages/AllToys/AllToys";
 import AddToy from "../Pages/AddToy/AddToy";
+import MyToys from "../Pages/MyToys/MyToys";
 import Blogs from "../Pages/Blogs/Blogs";
+// import ToyDetails from "../Pages/ToyDetails/ToyDetails";
+// import ToyLayout from "../Layout/ToyLayout";
 import ToyDetails from "../Pages/ToyDetails/ToyDetails";
-import ToyLayout from "../Layout/ToyLayout";
-import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -30,8 +32,8 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/allToys",
-        element: <PrivateRoute><AllToys></AllToys></PrivateRoute>,
+        path: "/toys",
+        element: <AllToys></AllToys>,
         
       },
      
@@ -41,26 +43,26 @@ const router = createBrowserRouter([
         element: <AddToy></AddToy>,
       },
       {
+        path: "/myToys",
+        element: <MyToys></MyToys>,
+      },
+      {
         path: "/blogs",
         element: <Blogs></Blogs>,
       },
-    ],
-  },
-  {
-    path: "/myToys",
-    element:<ToyLayout></ToyLayout> ,
-    loader: ({ params }) => fetch(`http://localhost:5000/allToy/${params._id}`),
-    children: [
       {
-        path: ":_id",
-        element: <ToyDetails></ToyDetails>,
+        path: "*",
+        element: <Error></Error>,
       },
     ],
   },
   {
-    path: "*",
-    element: <Error></Error>,
+    path: "/allToys/:id",
+    element:<ToyDetails></ToyDetails>,
+    loader: ({ params }) => fetch(`http://localhost:5000/allToy/${params._id}`),
+    
   },
+  
 ]);
 
 export default router;

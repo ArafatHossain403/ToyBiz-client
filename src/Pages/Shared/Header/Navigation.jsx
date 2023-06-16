@@ -4,8 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const Navigation = () => {
-  const { user, logOut,photoURL
-  } = useContext(AuthContext);
+  const { user, logOut,photoURL} = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -67,7 +66,7 @@ const Navigation = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/allToys">All Toys</Link>
+              <Link to="/toys">All Toys</Link>
             </li>
             <li>
               <Link to="/blogs">Blogs</Link>
@@ -112,7 +111,7 @@ const Navigation = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/allToys">All Toys</Link>
+            <Link to="/toys">All Toys</Link>
           </li>
           <li>
             <Link to="/blogs">Blogs</Link>
@@ -127,7 +126,7 @@ const Navigation = () => {
                 <Link to="/addToys">Add A Toy</Link>
               </li>
 
-              <span >{user?.displayName}</span>
+              <span className="mt-3 text-green-700">{user?.displayName}</span>
               <button onClick={handleLogOut} className="btn btn-neutral ml-3">
                 Logout
               </button>

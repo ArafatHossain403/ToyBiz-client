@@ -2,7 +2,7 @@
 const Banner = () => {
   return (
     <div >
-      <div className="carousel w-full my-20">
+      <div className="carousel w-full mb-20">
         <div id="slide1" className="carousel-item relative w-full max-h-96">
           <img
             src="https://cdn.pixabay.com/photo/2019/10/24/07/03/red-4573541_1280.jpg"

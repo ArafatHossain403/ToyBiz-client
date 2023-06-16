@@ -1,20 +1,27 @@
+// import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { useLoaderData } from "react-router-dom";
 
 
-const ToyDetails = ({toyDetails}) => {
-  
+const ToyDetails = () => {
+  // const {_id}=useParams();
+  const toyDetails = useLoaderData();
   const {
-    picture_url,
-    name,
-    seller_name,
-    seller_email,
-    sub_category,
-    price,
-    rating,
-    available_quantity,
-    description,
-  } = toyDetails;
-  console.log(toyDetails)
+    picture_url, name,seller_name, price, rating,seller_email,sub_category,available_quantity,description
+   } = toyDetails;
+   console.log(toyDetails);
+
+  // const [toys, setToys] = useState([]);
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/allToy")
+  //     .then((res) => res.json())
+  //     .then((data) =>{const toyDetail= data.find((item)=>item._id === _id)
+  //       setToys(toyDetail)}
+  //     );
+  // }, []);
+  
+  
+  
 
   return (
     <div className="my-10">
@@ -22,6 +29,7 @@ const ToyDetails = ({toyDetails}) => {
             <title>ToyBiz | ToyDetails</title>
         
       </Helmet>
+      <h2>toy details coming</h2>
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
           <img

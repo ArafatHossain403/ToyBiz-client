@@ -1,27 +1,33 @@
 
-import { useLoaderData} from 'react-router-dom';
-import Navigation from '../Pages/Shared/Header/Navigation';
-import ToyDetails from '../Pages/ToyDetails/ToyDetails';
-import Footer from '../Pages/Shared/Footer/Footer';
 
-const ToyLayout = () => {
-    const toyDetails = useLoaderData();
+// import Navigation from '../Pages/Shared/Header/Navigation';
+// import ToyDetails from '../Pages/ToyDetails/ToyDetails';
+// import Footer from '../Pages/Shared/Footer/Footer';
+// import { useLoaderData } from 'react-router-dom';
+
+// const ToyLayout = () => {
+   
+   
+//     const{_id}=toyDetails;
+
+    
+//     // const chefDetails = useLoaderData();
 
 
     
-    return (
-        <div>
-             <Navigation></Navigation>
+//     return (
+//         <div>
+//              <Navigation></Navigation>
              
              
-             <ToyDetails key={toyDetails._id}
-             toyDetails={toyDetails}
-             >
+//              <ToyDetails key={_id}
+//              toyDetails={toyDetails}
+//              >
                 
-             </ToyDetails>
-             <Footer></Footer>
-             </div>
-             )
-};
+//              </ToyDetails>
+//              <Footer></Footer>
+//              </div>
+//              )
+// };
 
-export default ToyLayout;
+// export default ToyLayout;

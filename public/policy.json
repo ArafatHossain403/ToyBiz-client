@@ -1,0 +1,26 @@
+[
+    {
+        "id":1,
+        "image":"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRiqzQa-bBS7IFGBc9ErWJdaMtmmHe_0USj9bJ7bAsYB2lQIKGV",
+        "header":"Support",
+        "para":"24*7 support"
+    },
+    {
+        "id":2,
+        "image":"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQqeBIRqSl6kb_tlJ5MrB2yDKcTrWbGa1bQL29F26bf5SCfQXE_",
+        "header":"Returns",
+        "para":"24*7 Free Return"
+    },
+    {
+        "id":3,
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiPQdVask16M7AXQPAwGTzhwxaJbgsnR7pO0SZdUrjOre9kibD",
+        "header":"Payment",
+        "para":"100% Secure"
+    },
+    {
+        "id":4,
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCZkTUkFagaI5pGk74JUhw5qkh0NBlaxec3NC1YzwmJ4oyQZb7",
+        "header":"Gift Service",
+        "para":"Support Gift Service"
+    }
+]

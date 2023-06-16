@@ -41,7 +41,7 @@ const AddToy = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          reset()
+          
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -61,7 +61,7 @@ const AddToy = () => {
         Add Your Toy
       </h1>
       <form onSubmit={handleAddToy}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6  ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6  w-3/4 mx-auto">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Picture of the Toy URL</span>
@@ -163,7 +163,7 @@ const AddToy = () => {
             />
           </div>
         </div>
-        <div className="form-control mt-6">
+        <div className="form-control w-1/2 mx-auto my-6">
           <input className="btn btn-accent" type="submit" value="Add Toy" />
         </div>
       </form>
