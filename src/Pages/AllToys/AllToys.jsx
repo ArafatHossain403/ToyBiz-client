@@ -7,6 +7,7 @@ const AllToys = () => {
   //   id
   //  } = toyDetails;
   const [search, setSearch] = useState("");
+  
   console.log(search);
 
   const [toys, setToys] = useState([]);
